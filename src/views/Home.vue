@@ -1,15 +1,15 @@
 <template>
-  <div class="home">
-    <HackerStories />
+  <div class="index container">
+    <StoriesList />
   </div>
 </template>
 
 <script>
-import HackerStories from "@/components/HackerStories";
+import StoriesList from "@/components/StoriesList";
 export default {
   name: "Home",
   components: {
-    HackerStories,
+    StoriesList,
   },
 };
 </script>

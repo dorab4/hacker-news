@@ -1,0 +1,93 @@
+@mixin desktop() {
+  @media only screen and (min-width: 700px) {
+    @content;
+  }
+}
+
+@mixin containerize($max-width: $max-width, $pad: true) {
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  @if ($pad) {
+    @include pad();
+  }
+}
+
+@mixin container($pad: true) {
+  @include containerize($max-width, $pad);
+}
+
+@mixin outer-container($pad: true) {
+  @include containerize(1440px, $pad);
+}
+
+@mixin pad() {
+  padding-left: $page-padding;
+  padding-right: $page-padding;
+
+  @media only screen and (max-width: $desktop) {
+    padding-left: $page-padding-small;
+    padding-right: $page-padding-small;
+  }
+
+  @media only screen and (max-width: $mobile) {
+    padding-left: $page-padding-extra-small;
+    padding-right: $page-padding-extra-small;
+  }
+}
+
+@mixin img-ratio($ratio: 133%) {
+  position: relative;
+  padding-top: $ratio;
+  width: 100%;
+  height: 0;
+
+  img,
+  ::v-deep img,
+  video,
+  iframe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@mixin vh($vh, $property) {
+  #{$property}: #{$vh}vh;
+  /* Fallback for browsers that do not support Custom Properties */
+  #{$property}: calc(var(--vh, 1vh) * #{$vh});
+}
+
+@mixin button-reset() {
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  text-align: inherit;
+  font: inherit;
+}
+
+@mixin res($width, $dir: max) {
+  @if $width== "mobile" {
+    $width: 480;
+  }
+
+  @if $width== "tab-p" {
+    $width: 768;
+  }
+
+  @if $width== "tab-l" {
+    $width: 1024;
+  }
+
+  @if $width== "large" {
+    $width: 1179;
+  }
+
+  @media (#{$dir}-width: $width + "px") {
+    @content;
+  }
+}
