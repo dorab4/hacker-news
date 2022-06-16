@@ -25,11 +25,4 @@ export default {
 .container {
   @include container();
 }
-
-#app {
-  &.dark-mode {
-    background: #1a202c;
-    color: $white;
-  }
-}
 </style>

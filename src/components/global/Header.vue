@@ -1,14 +1,14 @@
 <template>
   <header :class="[isDarkMode ? 'dark-mode' : '']">
     <div class="container">
-      <div class="title">
+      <router-link to="/" class="title">
         <Logo class="logo" />
         <span>Hacker News</span>
-      </div>
+      </router-link>
       <button
         class="switch-mode"
         @click="switchModeHandler"
-        aria-label="Switch to light mode"
+        :aria-label="getAriaLabel"
       >
         <DarkMode v-if="!isDarkMode" />
         <LightMode v-else />
@@ -32,10 +32,15 @@ export default {
     ...mapGetters({
       isDarkMode: "global/darkMode",
     }),
+
+    getAriaLabel() {
+      return this.isDarkMode ? "Switch to light mode" : "Switch to dark mode";
+    },
   },
   methods: {
     switchModeHandler() {
       this.$store.dispatch("global/setDarkMode", !this.isDarkMode);
+      document.querySelector("body").classList.toggle("dark-mode");
     },
   },
 };
@@ -56,7 +61,7 @@ header {
   @include container();
 
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -64,7 +69,6 @@ header {
   display: flex;
   align-items: center;
   font-weight: bold;
-  flex: 1;
 }
 
 .logo {
@@ -78,6 +82,9 @@ header {
   width: 36px;
   height: 36px;
   transition: all 200ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   svg {
     color: rgba($white, 0.8);

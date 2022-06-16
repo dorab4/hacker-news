@@ -44,5 +44,8 @@ export async function getNewestStories() {
     stories.push(story);
   }
 
+  // sort by score
+  stories.sort((a, b) => a.score - b.score);
+
   return stories;
 }

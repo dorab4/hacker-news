@@ -35,10 +35,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 .stories-list {
-  margin: 80px 0;
+  margin-top: 120px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 </style>

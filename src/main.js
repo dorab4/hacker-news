@@ -4,10 +4,7 @@ import router from "./router";
 import store from "./store";
 Vue.config.productionTip = false;
 
-import VueSkeletonLoader from "skeleton-loader-vue";
-
-// Register the component globally
-Vue.component("vue-skeleton-loader", VueSkeletonLoader);
+Vue.use(require("vue-moment"));
 
 new Vue({
   router,

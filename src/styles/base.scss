@@ -19,6 +19,11 @@ html {
 body {
   margin: 0;
   padding: 0;
+
+  &.dark-mode {
+    background: #1a202c;
+    color: $white;
+  }
 }
 
 .container {
