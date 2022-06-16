@@ -10,8 +10,8 @@
           <div class="story-author">
             <User />
             <div class="author-title">
-              {{ story.by.id }} ( <span class="author-score"><Score /></span
-              >{{ story.by.karma }})
+              {{ story.author }} ( <span class="author-score"><Score /></span
+              >{{ story.authorKarma }})
             </div>
           </div>
 

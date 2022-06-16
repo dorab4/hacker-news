@@ -1,13 +1,6 @@
-export default function fetchData(
-  url,
-  method = "GET",
-  headers = null,
-  body = null
-) {
+export default function fetchData(url, method = "GET") {
   const req = {
     method,
-    ...(headers && { headers }),
-    ...(body && { body }),
   };
 
   return fetch(url, req).then(async (res) => {

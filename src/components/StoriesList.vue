@@ -12,7 +12,7 @@
 
 <script>
 import StoryItem from "../components/StoryItem.vue";
-import { getNewestStories } from "@/services/StoryService";
+import { getFinalStories } from "@/services/StoryService";
 import Spinner from "@/components/UI/Spinner.vue";
 
 export default {
@@ -28,7 +28,7 @@ export default {
   },
   async created() {
     this.loading = true;
-    this.stories = await getNewestStories();
+    this.stories = await getFinalStories();
     if (this.stories) this.loading = false;
     this.$store.dispatch("stories/setStories", this.stories);
   },

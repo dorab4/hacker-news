@@ -1,5 +1,4 @@
-export default function getMultipleRandom(arr, num) {
+export default function fetchRandomNItems(arr, num) {
   const shuffled = [...arr].sort(() => 0.5 - Math.random());
-
   return shuffled.slice(0, num);
 }
