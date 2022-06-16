@@ -1,7 +1,11 @@
 <template>
   <div class="stories-list">
-    <Spinner v-if="loading" />
+    <!-- skeleton loader -->
+    <div class="skeleton" v-if="loading">
+      <SkeletonLoader v-for="(n, index) in 10" :key="index" />
+    </div>
     <StoryItem
+      v-else
       v-for="(story, index) in stories"
       :key="story.id"
       :story="story"
@@ -13,17 +17,17 @@
 <script>
 import StoryItem from "../components/StoryItem.vue";
 import { getFinalStories } from "@/services/StoryService";
-import Spinner from "@/components/UI/Spinner.vue";
+import SkeletonLoader from "@/components/UI/SkeletonLoader.vue";
 
 export default {
   components: {
     StoryItem,
-    Spinner,
+    SkeletonLoader,
   },
   data() {
     return {
       stories: [],
-      loading: false,
+      loading: true,
     };
   },
   async created() {
@@ -40,5 +44,9 @@ export default {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+.skeleton {
+  width: 100%;
 }
 </style>

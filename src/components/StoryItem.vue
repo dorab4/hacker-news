@@ -4,6 +4,7 @@
       <div class="image">
         <img :src="require(`@/assets/images/img-${index + 1}.jpg`)" alt="" />
       </div>
+
       <div class="content">
         <div class="story-title">{{ story.title }}</div>
         <div class="story-information">
@@ -132,6 +133,7 @@ export default {
   display: flex;
   align-items: flex-end;
   flex: 1;
+  max-width: 90%;
 }
 
 .image {
