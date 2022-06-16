@@ -70,6 +70,30 @@
   font: inherit;
 }
 
+// ANIMATIONS //
+@mixin hoverEffect($color: $white) {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: calc(50% - 12px);
+    width: 0;
+    height: 1px;
+    background: $color;
+    transition: width 350ms ease;
+  }
+
+  &:hover {
+    transition: width 350ms ease;
+
+    &::after {
+      width: 24px;
+    }
+  }
+}
+
 @mixin res($width, $dir: max) {
   @if $width== "mobile" {
     $width: 480;
