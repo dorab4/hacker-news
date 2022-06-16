@@ -2,7 +2,6 @@
   <div class="stories-list">
     <Spinner v-if="loading" />
     <StoryItem
-      v-else
       v-for="(story, index) in stories"
       :key="story.id"
       :story="story"
@@ -27,7 +26,7 @@ export default {
       loading: false,
     };
   },
-  async mounted() {
+  async created() {
     this.loading = true;
     this.stories = await getNewestStories();
     if (this.stories) this.loading = false;
@@ -39,6 +38,7 @@ export default {
   margin: 80px 0;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
 </style>

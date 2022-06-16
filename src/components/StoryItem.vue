@@ -8,7 +8,8 @@
           <div class="story-author">
             <User />
             <div class="author-title">
-              {{ story.by.id }}({{ story.by.karma }})
+              {{ story.by.id }} ( <span class="author-score"><Score /></span
+              >{{ story.by.karma }})
             </div>
           </div>
           <div class="story-published-date">
@@ -35,6 +36,7 @@
 import User from "@/assets/icons/user.svg";
 import Calendar from "@/assets/icons/calendar.svg";
 import Score from "@/assets/icons/star.svg";
+
 export default {
   components: {
     User,
@@ -43,7 +45,7 @@ export default {
   },
   props: {
     story: {
-      type: Object,
+      type: Object || Number,
       required: true,
     },
     index: {
@@ -56,8 +58,7 @@ export default {
 <style lang="scss" scoped>
 .story {
   display: block;
-  padding: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 48px;
 }
 
 .story-container {
@@ -73,9 +74,14 @@ export default {
 
 .story-title {
   font-weight: bold;
-  font-size: 32px;
+  font-size: 36px;
   line-height: 1.1;
   margin-bottom: 16px;
+}
+
+.author-title {
+  display: flex;
+  align-items: center;
 }
 
 .story-information {
@@ -84,6 +90,7 @@ export default {
   > * {
     display: flex;
     align-items: center;
+    font-size: 14px;
   }
 
   > * + * {
@@ -93,7 +100,7 @@ export default {
 
 .excerpt {
   line-height: 1.3;
-  font-size: 14px;
+  font-size: 16px;
   display: flex;
   align-items: flex-end;
   flex: 1;
@@ -107,7 +114,13 @@ img {
 }
 
 svg {
-  width: 20px;
+  height: 18px;
+  width: auto;
+  opacity: 0.8;
   margin-right: 4px;
+
+  .author-score & {
+    height: 14px;
+  }
 }
 </style>

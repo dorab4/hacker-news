@@ -1,9 +1,12 @@
-$color-primary: #ff6600;
-$color-secondary: #007ddb;
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+
+$color-primary: #0987a0;
+$color-secondary: #4c4065;
+$color-gray: #718096;
 $white: #ffffff;
 $black: #17171c;
 
-$max-width: 1260px;
+$max-width: 1160px;
 $max-width-large: 1440px;
 $page-padding: 120px;
 $page-padding-small: 64px;

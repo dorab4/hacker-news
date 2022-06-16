@@ -1,39 +1,18 @@
 <template>
-  <header>
+  <header :class="[isDarkMode ? 'dark-mode' : '']">
     <div class="container">
       <div class="title">
         <Logo class="logo" />
         <span>Hacker News</span>
       </div>
-      <nav class="main-menu">
-        <ul>
-          <li class="main-menu-item">
-            <router-link to="/new">New</router-link>
-          </li>
-          <li class="main-menu-item">
-            <router-link to="/past">Past</router-link>
-          </li>
-          <li class="main-menu-item">
-            <router-link to="/comments">Comments</router-link>
-          </li>
-          <li class="main-menu-item">
-            <router-link to="/ask">Ask</router-link>
-          </li>
-          <li class="main-menu-item">
-            <router-link to="/show">Show</router-link>
-          </li>
-          <li class="main-menu-item">
-            <router-link to="/jobs">Jobs</router-link>
-          </li>
-          <li class="main-menu-item">
-            <router-link to="/submit">Submit</router-link>
-          </li>
-        </ul>
-      </nav>
-      <div class="switch-mode">
-        <LightMode />
-        <DarkMode />
-      </div>
+      <button
+        class="switch-mode"
+        @click="switchModeHandler"
+        aria-label="Switch to light mode"
+      >
+        <DarkMode v-if="!isDarkMode" />
+        <LightMode v-else />
+      </button>
     </div>
   </header>
 </template>
@@ -41,11 +20,23 @@
 import Logo from "@/assets/icons/logo.svg";
 import LightMode from "@/assets/icons/light-mode.svg";
 import DarkMode from "@/assets/icons/dark-mode.svg";
+import { mapGetters } from "vuex";
+
 export default {
   components: {
     Logo,
     LightMode,
     DarkMode,
+  },
+  computed: {
+    ...mapGetters({
+      isDarkMode: "global/darkMode",
+    }),
+  },
+  methods: {
+    switchModeHandler() {
+      this.$store.dispatch("global/setDarkMode", !this.isDarkMode);
+    },
   },
 };
 </script>
@@ -54,6 +45,11 @@ header {
   background: $color-primary;
   padding: 20px 0;
   color: $white;
+
+  &.dark-mode {
+    background: $color-secondary;
+    color: $white;
+  }
 }
 
 .container {
@@ -64,21 +60,10 @@ header {
   align-items: center;
 }
 
-ul {
-  display: flex;
-
-  > * + * {
-    margin-left: 16px;
-  }
-}
-
-a {
-  @include hoverEffect();
-}
-
 .title {
   display: flex;
   align-items: center;
+  font-weight: bold;
   flex: 1;
 }
 
@@ -88,9 +73,19 @@ a {
 }
 
 .switch-mode {
-  margin-left: 24px;
+  background: rgba(#fff, 0.2);
+  border-radius: 3px;
+  width: 36px;
+  height: 36px;
+  transition: all 200ms ease;
+  cursor: pointer;
   svg {
-    width: 20px;
+    color: rgba($white, 0.8);
+    width: 18px;
+  }
+
+  &:hover {
+    background: rgba(#fff, 0.4);
   }
 }
 </style>
