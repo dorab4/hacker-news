@@ -30,6 +30,7 @@ export default {
     this.loading = true;
     this.stories = await getNewestStories();
     if (this.stories) this.loading = false;
+    this.$store.dispatch("stories/setStories", this.stories);
   },
 };
 </script>

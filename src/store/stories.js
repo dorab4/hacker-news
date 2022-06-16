@@ -1,29 +1,22 @@
 const state = () => ({
-  data: null,
-  id: null,
+  stories: [],
 });
 
-// getters
-const getters = {
-  // cartTotalPrice: (state, getters) => {}
+export const mutations = {
+  SET_STORIES(state, stories) {
+    state.stories = stories;
+  },
 };
 
-// actions
-const actions = {
-  // checkout({ commit, state }, products) {}
+export const getters = {
+  stories(state) {
+    return state.stories;
+  },
 };
 
-// mutations
-const mutations = {
-  setId(state, id) {
-    state.id = id;
-  },
-  setData(state, data) {
-    state.data = data;
-  },
-  resetData(state) {
-    state.data = [];
-    state.id = null;
+export const actions = {
+  setStories(context, payload) {
+    context.commit("SET_STORIES", payload);
   },
 };
 
