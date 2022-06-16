@@ -44,6 +44,10 @@ export default {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+
+  @include res("tab-p") {
+    margin-top: 80px;
+  }
 }
 
 .skeleton {

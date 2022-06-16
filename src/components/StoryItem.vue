@@ -33,7 +33,8 @@
         <p class="story-excerpt">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation.
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
         </p>
       </div>
     </div>
@@ -115,6 +116,7 @@ export default {
 .story-information {
   display: flex;
   margin-bottom: 24px;
+  flex-direction: column;
 
   > * {
     display: flex;
@@ -123,7 +125,7 @@ export default {
   }
 
   > * + * {
-    margin-left: 24px;
+    margin-top: 16px;
   }
 }
 
@@ -133,7 +135,6 @@ export default {
   display: flex;
   align-items: flex-end;
   flex: 1;
-  max-width: 90%;
 }
 
 .image {

@@ -26,6 +26,11 @@
   padding-right: $page-padding;
 
   @media only screen and (max-width: $desktop) {
+    padding-left: $page-padding;
+    padding-right: $page-padding;
+  }
+
+  @media only screen and (max-width: $screen) {
     padding-left: $page-padding-small;
     padding-right: $page-padding-small;
   }
