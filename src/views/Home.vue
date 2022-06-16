@@ -6,6 +6,7 @@
 
 <script>
 import StoriesList from "@/components/StoriesList";
+
 export default {
   name: "Home",
   components: {
